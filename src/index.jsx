@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import AppRoot from './AppRoot'
+import App from './Components/App'
+// styles
+import './styles/main.scss'
 
-ReactDOM.render(<AppRoot />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))

@@ -1,0 +1,45 @@
+.UsersTable {
+  background-color: var(--bg-color_white);
+  box-shadow: 0 10px 10px 0 rgba(0,0,0, 0.25);
+  border-spacing: 0;
+
+  &__thead {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  }
+  &__th {
+    text-align: left;
+    padding: .5rem 1rem;
+    width: auto;
+    &:first-of-type {
+      width: 300px;
+    }
+  }
+
+  &__td {
+    box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.1);
+    padding: .5rem 1rem;
+  }
+}
+
+.user-data {
+  display: flex;
+  flex-direction: row;
+
+  &__image {
+    margin-right: 1rem;
+  }
+
+  &__name {
+    margin: 0;
+  }
+  &__delete {
+    color: var(--text-color_accent);
+    visibility: hidden;
+  }
+
+  &:hover & {
+    &__delete {
+      visibility: visible;
+    }
+  }
+}

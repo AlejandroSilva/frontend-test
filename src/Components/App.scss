@@ -1,0 +1,10 @@
+.App {
+
+  color: var(--text-color);
+  min-height: 100vh;
+
+  &__header {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
