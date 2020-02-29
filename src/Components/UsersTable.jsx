@@ -1,7 +1,8 @@
 import React from 'react'
 import './UsersTable.scss'
+import {FALLBACK_USER_IMG} from '../constants/constants'
 
-const UsersTable = ()=> {
+const UsersTable = ({users})=> {
   return (
     <table className={'UsersTable'}>
       <thead className="UsersTable__thead">
@@ -11,19 +12,25 @@ const UsersTable = ()=> {
         </tr>
       </thead>
       <tbody>
-        {(new Array(10)).fill('-').map(()=>
-          <tr key={Math.random()}>
+        {users.map((user)=>
+          <tr key={user.id}>
             <td className={'UsersTable__td'}>
               <div className="user-data">
-                <img className={'user-data__image'} src="https://place-hold.it/50x50" alt=""/>
-                <div>
-                  <p className={'user-data__name'}><strong>Jhon Doe Lorem</strong></p>
+                <div className={'user-data__image'} style={{
+                  backgroundImage: `url('${user.photo}'), url(${FALLBACK_USER_IMG})`
+                }} />
+                <div className={'user-data__name-container'}>
+                  <p className={'user-data__name'}>
+                    <strong>{user.name}</strong>
+                  </p>
                   <a className={'user-data__delete'} target='#'>Eliminar</a>
                 </div>
               </div>
             </td>
             <td className={'UsersTable__td'}>
-              <span className={'user-data__description'}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut dolore doloremque, ea esse est ipsa libero necessitatibus nihil nobis rerum sequi soluta temporibus. Inventore libero provident sunt suscipit vero?</span>
+              <span className={'user-data__description'}>
+                {user.description}
+              </span>
             </td>
           </tr>
         )}

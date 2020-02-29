@@ -11,4 +11,14 @@
     display: flex;
     flex-direction: row-reverse;
   }
+
+  &__error {
+    color: var(--text-color_bold);
+    text-align: center;
+    margin: 5rem 0;
+  }
+
+  .line-loader {
+    margin: 5rem 0;
+  }
 }

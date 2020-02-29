@@ -1,8 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './UsersDashboard.scss'
 import UsersTable from './UsersTable'
+import useGetUsers from '../hooks/useGetUsers'
+import LineLoader from './line-loader/LineLoader'
 
 const UsersDashboard = ()=> {
+  const [usersAsync, getUsers] = useGetUsers()
+
+  useEffect(()=> {
+    getUsers()
+  }, [])
+
   return (
     <div className={'UsersDashboard container'}>
 
@@ -19,7 +27,11 @@ const UsersDashboard = ()=> {
       </div>
 
       <div className="UsersDashboard__table">
-        <UsersTable />
+        {usersAsync.isLoading && <LineLoader />}
+        {usersAsync.isError && <div className={'UsersDashboard__error'}>
+          No se pudo descargar la lista de usuarios
+        </div>}
+        {usersAsync.isOk && <UsersTable users={usersAsync.value}/>}
       </div>
 
       <div className="UsersDashboard__paginator">
